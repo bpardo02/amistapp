@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="border-2 border-black bg-retroBg p-6 w-[420px]">
+
+  <h2 class="text-2xl mb-6 text-center">Nuevo recuerdo</h2>
+
+  <form method="post" enctype="multipart/form-data" class="space-y-5">
+    {% csrf_token %}
+
+    <div class="grid grid-cols-2 items-center gap-3">
+      <label for="{{ form.titulo.id_for_label }}">Título:</label>
+      {{ form.titulo }}
+    </div>
+
+    <div class="grid grid-cols-2 items-start gap-3">
+      <label for="{{ form.descripcion.id_for_label }}">Descripción:</label>
+      {{ form.descripcion }}
+    </div>
+
+    <div class="grid grid-cols-2 items-center gap-3">
+      <label for="{{ form.archivo.id_for_label }}">Archivo:</label>
+      {{ form.archivo }}
+    </div>
+
+    <button class="border-2 border-black bg-retroNav w-full py-2">
+      Subir
+    </button>
+  </form>
+
+</div>
+{% endblock %}

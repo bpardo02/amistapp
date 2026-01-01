@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="border-2 border-black bg-retroBg p-6 w-[420px]">
+
+  <h2 class="text-2xl mb-6 text-center">Nueva noticia</h2>
+
+  <form method="post" class="space-y-5">
+    {% csrf_token %}
+
+    <div class="grid grid-cols-2 items-center gap-3">
+      <label for="{{ form.titulo.id_for_label }}">Título:</label>
+      {{ form.titulo }}
+    </div>
+
+    <div class="grid grid-cols-2 items-start gap-3">
+      <label for="{{ form.contenido.id_for_label }}">Contenido:</label>
+      {{ form.contenido }}
+    </div>
+
+    <button class="border-2 border-black bg-retroNav w-full py-2">
+      Publicar
+    </button>
+  </form>
+
+</div>
+{% endblock %}

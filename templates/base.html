@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}The Social Nostalgia Group{% endblock %}</title>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            retroBg: '#efe5cc',
+            retroNav: '#fcf6e6'
+          },
+          fontFamily: {
+            terminal: ['VT323', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="font-terminal text-black min-h-screen p-6 bg-[#f3ebd7]">
+
+<div class="max-w-5xl mx-auto space-y-8 flex flex-col items-center">
+
+  <!-- NAV -->
+  <header class="border-2 border-black bg-retroNav px-6 py-3 flex justify-between w-full">
+    <nav class="flex gap-6">
+      <a href="/">Home</a>
+      <a href="/noticias/">News</a>
+      <a href="/recuerdos/">Memories</a>
+      <a href="/resenas/">Reviews</a>
+    </nav>
+
+    {% if user.is_authenticated %}
+      <div class="text-right text-sm">
+        <div>{{ user.username }}</div>
+        <form method="post" action="/logout/">
+          {% csrf_token %}
+          <button class="underline">Logout</button>
+        </form>
+      </div>
+    {% endif %}
+  </header>
+
+  <h1 class="text-4xl text-center">THE SOCIAL NOSTALGIA GROUP</h1>
+
+  <main class="w-full flex justify-center">
+    {% block content %}{% endblock %}
+  </main>
+
+</div>
+</body>
+</html>

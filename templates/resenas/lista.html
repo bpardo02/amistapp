@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="w-full max-w-3xl space-y-4">
+
+  <div class="flex justify-between">
+    <h2 class="text-2xl">Reseñas</h2>
+    <a href="/resenas/crear/" class="underline">+ Reseñar</a>
+  </div>
+
+  {% for r in resenas %}
+    <div class="border-2 border-black bg-retroBg p-4">
+      <div class="flex justify-between">
+        <strong>{{ r.item.nombre }}</strong>
+        <span>{{ r.puntaje }}/5 ⭐</span>
+      </div>
+      <div class="text-sm">{{ r.item.categoria }} · {{ r.autor.username }}</div>
+      <p>{{ r.comentario }}</p>
+    </div>
+  {% endfor %}
+
+</div>
+{% endblock %}
